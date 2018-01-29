@@ -1,0 +1,13 @@
+<% include header %>
+<ul id="kategorien">
+    <% kategorien.forEach(function(cat) { %>
+    <li>
+        <a href="/<%= cat.name %>">
+            <span class="cat_name"><%= cat.name %></span>
+            <span class="cat_amount">(<%= cat.get('count') %> Artikel)</span>
+            <span class="cat_desc"><%= cat.beschreibung %></span>
+        </a>
+    </li>
+    <% }); %>
+</ul>
+<% include footer %>

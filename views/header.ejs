@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet"/>
+</head>
+<body class="container">
+<nav class="header">
+    <div id="stripes">
+        <table id="headerTable">
+            <td><a href="/"><img src="images/logo.png"></a></td>
+            <td><a id="link_warenkorb" href="/cart">
+                    Warenkorb<br>
+                    <%= warenkorb.gesamtMenge %> Artikel<br>
+                    <%= Number(warenkorb.gesamtPreis).toFixed(2); %>€
+                </a>
+            </td>
+        </table>
+    </div>
+</nav>
+
+<div class="left">
+</div>
+<div class="right">
+</div>
+
+<main>
+    <div class="main">
+        <div id="waerbung">
+            <p>Hier könnte ihre Werbung stehen!</p>
+        </div>
+        <div id="content">

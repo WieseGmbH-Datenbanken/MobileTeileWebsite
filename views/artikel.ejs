@@ -1,0 +1,45 @@
+<% include header %>
+<table id="artikel">
+    <% var i = 0; artikel.forEach(function(item) { i++; %>
+    <% if(i > 1) { %>
+    <tr>
+        <td colspan="5">
+            <hr>
+        </td>
+    </tr>
+    <% } %>
+    <tr>
+        <td colspan="2" class="td_name">
+            <%= item.name %>
+        </td>
+        <td class="td_lieferant">
+            <%= item.lieferant %>
+        </td>
+    </tr>
+    <tr>
+        <td class="td_products">
+            <% if(item.produkte.length > 1) { %>
+            Dieses Set enthält:
+            <ul>
+                <% item.produkte.forEach(function (produkt) { %>
+                <li><%= produkt %></li>
+                <% }) %>
+            </ul>
+            <% } %>
+        </td>
+        <td class="td_desc"><%= item.beschreibung %></td>
+        <td class="td_data">
+            <p class="price"><%= Number(item.preis).toFixed(2); %>€</p>
+            inkl. 19% MwSt. zzgl. Versand<br>
+            <form action="/add" method="POST">
+                <input type="hidden" name="id" value="<%= item.artikel_id %>">
+                <input type="hidden" name="preis" value="<%= item.preis %>">
+                Menge: <input name="menge" type="number" min="0" max="<%= item.lager %>" value="1"> Auf
+                Lager: <%= item.lager %><br>
+                <span><input type="submit" value="In den Warenkorb"/></span>
+            </form>
+        </td>
+    </tr>
+    <% }); %>
+</table>
+<% include footer %>

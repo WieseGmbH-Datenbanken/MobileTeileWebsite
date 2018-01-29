@@ -1,0 +1,13 @@
+{
+  "dbname": "mobileteile",
+  "username": "root",
+  "password": "password",
+  "opts": {
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false,
+      "freezeTableName": true
+    }
+  },
+  "sessionkey": "mobile-teile"
+}

@@ -1,0 +1,78 @@
+<% include header %>
+<table id="warenkorb">
+    <tr class="header">
+        <th colspan="2" style="width: 60%">Artikel</th>
+        <th style="width: 10%">Anzahl</th>
+        <th style="width: 15%">Stückpreis</th>
+        <th style="width: 15%">Summe</th>
+    </tr>
+    <% if(artikel.length <= 0) { %>
+    <tr>
+        <td colspan="5">
+            Ihr Warenkorb enthält derzeit keine Artikel.
+        </td>
+    </tr>
+    <% } else { %>
+    <% var i = 0; artikel.forEach(function(item) { i++; %>
+    <% if(i > 1) { %>
+    <tr>
+        <td colspan="5">
+            <hr>
+        </td>
+    </tr>
+    <% } %>
+    <tr>
+        <td class="artikel">
+            <p class="name"><%= item.name %></p>
+            <p class="art">Art.-Nr: <%= item.artikel_id %> (<%= item.lieferant %>)</p>
+            <% if(item.produkte.length > 1) { %>
+            <div class="products">
+                Dieses Set enthält:
+                <ul>
+                    <% item.produkte.forEach(function (produkt) { %>
+                    <li><%= produkt %></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <% } %>
+        </td>
+        <td class="desc">
+            <%= item.beschreibung %>
+        </td>
+        <td class="menge">
+            <input name="menge" type="number" min="0" max="<%= item.lager %>" value="<%= item.menge %>">
+        </td>
+        <td class="preis">
+            <%= Number(item.preis).toFixed(2); %> €
+        </td>
+        <td class="summe">
+            <%= Number(item.preis * item.menge).toFixed(2); %> €
+        </td>
+    </tr>
+    <% })}; %>
+</table>
+<table id="warenkorbSumme">
+    <% var versand = artikel.length > 0?7.95:0; var summe = warenkorb.gesamtPreis + versand; var mwst = summe - (summe / 1.19); %>
+    <tr>
+        <td>Warenwert:</td>
+        <td class="val"><%= Number(warenkorb.gesamtPreis).toFixed(2); %> €</td>
+    </tr>
+    <tr>
+        <td>Versandkosten:</td>
+        <td class="val"><%= Number(versand).toFixed(2); %> €</td>
+    </tr>
+    <tr>
+        <td>inkl. 19% MwSt:</td>
+        <td class="val"><%= Number(mwst).toFixed(2); %> €</td>
+    </tr>
+    <tr>
+        <td><b>Zwischensumme:</b></td>
+        <td class="val"><%= Number(summe).toFixed(2); %> €</td>
+    </tr>
+</table>
+<% if(artikel.length > 0) { %>
+<form id="checkout" action="/cart/checkout" method="POST">
+    <span><input type="submit" value="Zur Kasse"/></span>
+</form>
+<% } %>
+<% include footer %>
