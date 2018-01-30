@@ -3,8 +3,8 @@
 :root {
   //188 28 119
   //240 105 181
-  --lightorange: #f069b5;//#f59c00;
-  --orange: #bc1c77;//#EF7D00;
+  --lightorange: #f069b5; //#f59c00;
+  --orange: #bc1c77; //#EF7D00;
   --grey: #909090;
 }
 
@@ -38,7 +38,7 @@
   }
 
   @media (min-device-width: 1024px) and (max-device-width: 1600px) {
-    grid-template-columns: 1fr 900px 1fr;
+    grid-template-columns: 1fr 1000px 1fr;
   }
 }
 
@@ -201,11 +201,11 @@
             padding-bottom: 6px;
           }
           input {
-            width: 14%;
+            width: 24%;
             text-align: right;
             &[type=submit] {
               text-align: center;
-              width: 80%;
+              width: 90%;
               text-transform: uppercase;
               font-weight: bold;
               background: var(--lightorange);
@@ -260,19 +260,8 @@
           &.menge {
             width: 10%;
             input {
-              width: 70%;
+              width: 100%;
               text-align: right;
-              &[type=submit] {
-                text-align: center;
-                width: 80%;
-                text-transform: uppercase;
-                font-weight: bold;
-                background: var(--lightorange);
-                border-color: var(--lightorange);
-                border-radius: 5px;
-                min-height: 40px;
-                margin-top: 10px;
-              }
             }
           }
 

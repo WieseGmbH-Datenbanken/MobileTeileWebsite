@@ -10,9 +10,10 @@ router.get('/', function (req, res, next) {
         group: ['kategorie_id', 'name', 'beschreibung'],
         attributes: ['name', 'beschreibung', [sequelize.fn('COUNT', 'artikel.artikel_id'), 'count']],
         include: [{
-            model: req.models.Produkt, required: true,
+            model: req.models.Produkt,
             include: [{
-                model: req.models.Artikel
+                model: req.models.Artikel,
+                required: true
             }]
         }]
     }).then(function (results) {
