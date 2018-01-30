@@ -6,7 +6,8 @@ const Warenkorb = require('../lib/warenkorb');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     req.models.Produktkategorie.findAll({
-        group: ['name'],
+        includeIgnoreAttributes: false,
+        group: ['kategorie_id', 'name', 'beschreibung'],
         attributes: ['name', 'beschreibung', [sequelize.fn('COUNT', 'artikel.artikel_id'), 'count']],
         include: [{
             model: req.models.Produkt, required: true,

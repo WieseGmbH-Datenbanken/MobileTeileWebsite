@@ -25,8 +25,8 @@ var exports = module.exports = function (sequelize, Sequelize) {
     bindbi(temp.Lieferant, temp.Produkt, 'lieferant_id');
     bindbi(temp.Kunde, temp.Kundenbestellung, 'kunde_ID');
 
-    zwischenTabelle(temp.Produkt, temp.Artikel, 'produkt_artikel', 'Produkt_ID', 'Artikel_ID');
-    zwischenTabelle(temp.Artikel, temp.Kundenbestellung, 'artikel_kundenbestellung', 'Artikel_ID', 'Auftrag_ID');
+    zwischenTabelle(temp.Produkt, temp.Artikel, 'Produkt_Artikel', 'Produkt_ID', 'Artikel_ID');
+    zwischenTabelle(temp.Artikel, temp.Kundenbestellung, 'Artikel_Kundenbestellung', 'Artikel_ID', 'Auftrag_ID');
 
     return temp;
 };
